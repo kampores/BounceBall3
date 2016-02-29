@@ -6,12 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-public class BounceBallControlPanel extends JPanel {
+public class BounceBallControlPanel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3891165419324205102L;
+	private JPanel bounceBallPanel	= null;
 	private JComboBox<String> bounceBallColorComboBox	= null;
 	private JComboBox<String> bounceBallAmountComboBox	= null;
 	private JButton bounceBallStartStopButton	= null;
@@ -26,16 +23,17 @@ public class BounceBallControlPanel extends JPanel {
 	
 	public BounceBallControlPanel() {
 		// TODO Auto-generated constructor stub
+		bounceBallPanel = new JPanel();
 		bounceBallStartStopButton = new JButton(BounceBallStartStopButtonName);
 		bounceBallColorComboBox = new JComboBox<String>(BounceBallColorComboBoxString);
 		bounceBallAmountComboBox = new JComboBox<String>(BounceBallAmountComboBoxString);
 		bounceBallAddButton = new JButton(BounceBallAddButtonName);
 		bounceBallDeleteButton = new JButton(BounceBallDeleteButtonName);
-		add(bounceBallStartStopButton);
-		add(bounceBallColorComboBox);
-		add(bounceBallAmountComboBox);
-		add(bounceBallAddButton);
-		add(bounceBallDeleteButton);
+		bounceBallPanel.add(bounceBallStartStopButton);
+		bounceBallPanel.add(bounceBallColorComboBox);
+		bounceBallPanel.add(bounceBallAmountComboBox);
+		bounceBallPanel.add(bounceBallAddButton);
+		bounceBallPanel.add(bounceBallDeleteButton);
 	}
 
 	public void addActionListener(ActionListener bounceBallButtonActionListener) {
@@ -50,5 +48,9 @@ public class BounceBallControlPanel extends JPanel {
 
 	public String getBounceBallAmountComboBoxSelectedItem() {
 		return bounceBallAmountComboBox.getSelectedItem().toString();
+	}
+
+	public JPanel getBounceBallPanel() {
+		return bounceBallPanel;
 	}
 }

@@ -20,7 +20,7 @@ public class BounceBallWindow {
 		this.bounceBallFrame = new JFrame("Bounce Ball");
 		bounceBallFrame.setSize(500, 500);
 		bounceBallFrame.setLocation(400, 400);
-		bounceBallFrame.add(bounceBallControlPanel, BorderLayout.NORTH);
+		bounceBallFrame.add(bounceBallControlPanel.getBounceBallPanel(), BorderLayout.NORTH);
 	}
 	
 	public void redrawBounceBallComponent(){
@@ -47,7 +47,7 @@ public class BounceBallWindow {
 
 	public void createBounceBallDrawComponent(BounceBallManager bounceBallManager) {
 		this.bounceBallDrawComponent = new BounceBallDrawComponent(bounceBallManager);
-		bounceBallFrame.add(bounceBallDrawComponent,BorderLayout.CENTER);
+		bounceBallFrame.add(bounceBallDrawComponent.getBounceBallDrawComponent(),BorderLayout.CENTER);
 	}
 
 	public void setVisible() {
