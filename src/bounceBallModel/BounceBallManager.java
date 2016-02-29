@@ -7,37 +7,53 @@ import bounceBallView.BounceBallWindow;
 
 public class BounceBallManager {
 	private ArrayList<BounceBall> bounceBallList = new ArrayList<BounceBall>();
-	private BounceBallBox bounceBallBox;
-	private Random random;
-	private int bounceBallIndex;
-	private boolean bounceBallMove;
-	private BounceBallWindow bounceBallWindow;
+	private BounceBallBox bounceBallBox	= null;
+	private Random random	= null;
+	private boolean bounceBallMove	= false;
+	private BounceBallWindow bounceBallWindow	= null;
 	
 	public BounceBallManager() {
 		// TODO Auto-generated constructor stub
-		this.bounceBallBox=new BounceBallBox(100, 100, 300, 200);
-		this.bounceBallIndex=0;
 		this.bounceBallMove=true;
 		this.random=new Random();
+	}
 
+	public BounceBallBox createBounceBallBox(int leftTopPositionX, int leftTopPositionY, int width, int height, String colorCodeRGB) {
+		this.bounceBallBox=new BounceBallBox(leftTopPositionX, leftTopPositionY, width, height, colorCodeRGB);
+		return bounceBallBox;
 	}
 	
-	public void createBall(){
+	public void createBall(String bounceBallColorCode){
 		BounceBall bounceBall=new BounceBall(bounceBallBox.getPositionX()+random.nextInt(bounceBallBox.getWidth()),
 											bounceBallBox.getPositionY()+random.nextInt(bounceBallBox.getHeight()),
-											10);
+											10,
+											bounceBallColorCode);
 		bounceBall.setDirectionX(random.nextInt(1)*2-1);
 		bounceBall.setDirectionY(random.nextInt(1)*2-1);
 		bounceBallList.add(bounceBall);
-		bounceBallIndex++;
 	}
 	
-	public void deleteBall(){
+	public void deleteBall(String bounceBallColorCode,int deleteBallNumber){
+		int removedBalls = 0;
+		int bounceBallListSize = bounceBallList.size();
 		if(bounceBallList.isEmpty()){
 			bounceBallWindow.cannotDeleteBounceBallPopupMessage();
+			return;
 		}
-		else{
-			bounceBallList.remove(bounceBallIndex---1);
+		for(int i=bounceBallListSize-1;0<=i;i--){
+			if (bounceBallColorCode.equals(bounceBallList.get(i).getColorCodeRGB())) {
+				if (0<deleteBallNumber) {
+					bounceBallList.remove(i);
+					deleteBallNumber--;					
+					removedBalls++;
+				}
+				else {
+					break;
+				}
+			}
+		}
+		if (0<deleteBallNumber) {
+			bounceBallWindow.deleteBounceBallNoticePopupMessage(removedBalls,deleteBallNumber);
 		}
 	}
 	
@@ -60,5 +76,4 @@ public class BounceBallManager {
 	public void setBounceBallWindow(BounceBallWindow bounceBallWindow) {
 		this.bounceBallWindow = bounceBallWindow;
 	}
-	
 }

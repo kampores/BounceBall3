@@ -1,17 +1,19 @@
 package bounceBallModel;
 
 public class BounceBallBox {
-	private int positionX;
-	private int positionY;
-	private int width;
-	private int height;
+	private int positionX	= 0;
+	private int positionY	= 0;
+	private int width		= 0;
+	private int height		= 0;
+	private String colorCodeRGB	= null;
 	
-	public BounceBallBox(int positionX,int positionY,int width,int height) {
+	public BounceBallBox(int positionX, int positionY, int width, int height, String colorCodeRGB) {
 		// TODO Auto-generated constructor stub
-		this.positionX=positionX;
-		this.positionY=positionY;
-		this.width=width;
-		this.height=height;
+		this.positionX = positionX;
+		this.positionY = positionY;
+		this.width = width;
+		this.height = height;
+		this.colorCodeRGB = colorCodeRGB;
 	}
 
 	public int getPositionX() {
@@ -28,6 +30,10 @@ public class BounceBallBox {
 
 	public int getHeight() {
 		return height;
+	}
+
+	public String getColorCodeRGB() {
+		return colorCodeRGB;
 	}
 	
 }

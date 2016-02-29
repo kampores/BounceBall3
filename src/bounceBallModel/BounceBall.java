@@ -2,17 +2,19 @@ package bounceBallModel;
 
 public class BounceBall {
 	
-	private int positionX;
-	private int positionY;
-	private int directionX;
-	private int directionY;
-	private int radius;
+	private int positionX	= 0;
+	private int positionY	= 0;
+	private int directionX	= 0;
+	private int directionY	= 0;
+	private int radius		= 0;
+	private String colorCodeRGB	= null;
 	
-	public BounceBall(int positionX,int positionY,int radius) {
+	public BounceBall(int positionX,int positionY,int radius,String colorCodeRGB) {
 		// TODO Auto-generated constructor stub
 		this.positionX=positionX;
 		this.positionY=positionY;
 		this.radius=radius;
+		this.colorCodeRGB=colorCodeRGB;
 	}
 
 	public int getPositionX() {
@@ -53,5 +55,13 @@ public class BounceBall {
 
 	public void setRadius(int radius) {
 		this.radius = radius;
+	}
+
+	public String getColorCodeRGB() {
+		return colorCodeRGB;
+	}
+
+	public void setColorCodeRGB(String colorCodeRGB) {
+		this.colorCodeRGB = colorCodeRGB;
 	}
 }
